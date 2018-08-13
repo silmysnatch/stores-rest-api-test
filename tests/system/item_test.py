@@ -82,7 +82,7 @@ class ItemTest(BaseTest):
             with self.app_context():
                 StoreModel("test_store").save_to_db()
                 ItemModel("test", 25.00, 1).save_to_db()
-                self.assertIsNotNone(ItemModel.find_by_name("teust"))
+                self.assertIsNotNone(ItemModel.find_by_name("test"))
                 response = client.post("/item/test", data={"price": 32.11, "store_id": 1},
                                        headers={"Authorization": self.access_token})
                 self.assertEqual(400, response.status_code)
